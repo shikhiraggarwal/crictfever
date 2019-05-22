@@ -21,4 +21,20 @@ class PrizesController < ApplicationController
       format.json { render json: {"message" => message} }
     end
   end
+
+  def get_bettable_game
+    game = Game.nextbettablegame
+    if game.nil?
+      game = Game.nextgame
+      bettable = false
+    else
+      bettable = true
+    end
+    teams = game.teamsinfo
+    respond_to do |format|
+      format.html
+      format.json { render json: {"game" => game, "teams" => teams, "bettable" => bettable}}
+    end
+  end
+
 end

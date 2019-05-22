@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  get 'terms/index'
+  get 'bets/index'
+  post 'bets/place'
   get 'players/profile'
   get 'players/new'
   get 'players/edit'
   post 'players/update'
   get 'prizes/index'
+  get 'prizes/get_bettable_game'
   get 'prizes/adreward'
   get 'ranks/index'
   devise_for :supers, ActiveAdmin::Devise.config

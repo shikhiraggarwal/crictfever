@@ -16,6 +16,7 @@
 # +------------+--------------+------+-----+---------+----------------+
 
 class Player < ApplicationRecord
+  has_many :bet
   def get_player_rank
     if self.data.nil? || self.data.empty?
       data = {}
