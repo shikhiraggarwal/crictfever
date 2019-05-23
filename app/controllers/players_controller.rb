@@ -25,6 +25,13 @@ class PlayersController < ApplicationController
     else
       player = nil
     end
+    has_update = false
+    if has_update
+      tempplayer = player.to_json
+      tempplayer = JSON.parse(tempplayer)
+      tempplayer["update"] = "true"
+      player = tempplayer
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: player }
