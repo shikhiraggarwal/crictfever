@@ -1,4 +1,5 @@
 class TermsController < ApplicationController
+caches_action :index
   def index
     terms = Term.all
     respond_to do |format|

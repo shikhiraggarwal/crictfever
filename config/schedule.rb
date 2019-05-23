@@ -18,8 +18,8 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-set :output, '~/projects/sidekiq/cricfever/log/schedule.log'
+set :output, '/home/shikhir_aggarwal92/app/crictfever/log/schedule.log'
 
 every '* * * * *' do # Many shortcuts available: :hour, :day, :month, :year, :reboot
-  rake "rank_update", :environment => 'development'
+  rake "rank_update"
 end
