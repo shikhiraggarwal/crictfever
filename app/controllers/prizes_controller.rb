@@ -1,5 +1,6 @@
 class PrizesController < ApplicationController
 caches_action :index
+caches_action :get_bettable_game
   def index
     prizes = Reward.where(:game => 'wc')
     respond_to do |format|

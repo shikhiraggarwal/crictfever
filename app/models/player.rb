@@ -17,6 +17,8 @@
 
 class Player < ApplicationRecord
   has_many :bet
+  nilify_blanks
+#  before_save :setemailnull, if: self.email == ""
   def get_player_rank
     if self.data.nil? || self.data.empty?
       data = {}
@@ -48,4 +50,8 @@ class Player < ApplicationRecord
   def self.get_rankings
     JSON.parse($redis.get("players:rankings"))
   end
+
+#  def setemailnull
+#    self.email = nil
+#  end
 end
