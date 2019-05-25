@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'terms/index'
+  get 'terms/fixtures'
   get 'bets/index'
   post 'bets/place'
   get 'players/profile'
