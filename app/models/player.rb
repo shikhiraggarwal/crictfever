@@ -40,7 +40,6 @@ class Player < ApplicationRecord
       player_page = (player_rank.to_f/20).ceil
       data["rank"] = player_rank.to_s
       data["page"] = player_page.to_s
-      data["rankings"] = rankings
       data["last_updated"] = (Time.now + 2.minutes).to_s
       self.data = data.to_json
       self.save

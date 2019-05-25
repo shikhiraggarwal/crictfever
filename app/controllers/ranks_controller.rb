@@ -10,7 +10,7 @@ class RanksController < ApplicationController
     else
       player.get_player_rank
       data = JSON.parse(player.data)
-      @rankings = data["rankings"]
+      @rankings = Player.get_rankings
       @rank = data["rank"]
       @page = data["page"]
       @points = player.points

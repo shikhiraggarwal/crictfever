@@ -16,4 +16,12 @@ caches_action :index
     end
   end
 
+  def teams
+    teams = Team.all
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: teams }
+    end
+  end
+
 end
