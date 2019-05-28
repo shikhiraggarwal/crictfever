@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'pages#home'
   get 'terms/index'
   get 'terms/fixtures'
   get 'terms/teams'
