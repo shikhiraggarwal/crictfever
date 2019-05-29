@@ -2,7 +2,7 @@ ActiveAdmin.register Team do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :name, :image, :rank, :game_points, :negative, :run_rate
+permit_params :name, :image, :rank, :game_points, :negative, :run_rate, :played, :won, :lost
 #
 # or
 #
