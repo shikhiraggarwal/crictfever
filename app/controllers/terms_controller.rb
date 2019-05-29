@@ -24,4 +24,12 @@ caches_action :index
     end
   end
 
+  def standings
+    teams = Team.order("rank asc")
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: teams }
+    end
+  end
+
 end

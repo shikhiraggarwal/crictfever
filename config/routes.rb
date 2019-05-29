@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'terms/index'
   get 'terms/fixtures'
+  get 'terms/standings'
   get 'terms/teams'
   get 'bets/index'
   post 'bets/place'
