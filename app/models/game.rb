@@ -4,10 +4,11 @@ class Game < ApplicationRecord
   has_many :bet
   @last_match = "2019-07-15 12:00:00 +0530".to_time
 
-  def self.nextgame
+  def self.nextgames
     now = Time.now
-    game = Game.where(matchtime: now..@last_match).sort_by(&:matchtime).first
-    return game
+    tomorrow = Time.now + 86400
+    games = Game.where(matchtime: now..tomorrow).sort_by(&:matchtime)
+    return games
   end
 
   def teamsinfo
@@ -30,23 +31,28 @@ class Game < ApplicationRecord
     end
   end
 
-  def self.nextbettablegame
-    nextgame = Game.nextgame
-    if nextgame.canbet
-      return nextgame
-    else
-      return nil
+  def self.nextbettablegames
+    nextgames = Game.nextgames
+    bettable_games = []
+    nextgames.each do |game|
+      if game.canbet
+        bettable_games << game
+      end
     end
+    return bettable_games
   end
 
-  def self.currentgame
-    yesterday = Time.now - 86400
-    game = Game.where(matchtime: yesterday..@last_match).sort_by(&:matchtime).first
-    if game.finished == 0
-      return game
-    else
-      return nil
+  def self.currentgames
+    yesterday = Time.now - 36000
+    now = Time.now
+    games = Game.where(matchtime: yesterday..now).sort_by(&:matchtime)
+    current_games = []
+    games.each do |game|
+      if game.finished == 0
+        current_games << game
+      end
     end
+    return current_games
   end
   
 end

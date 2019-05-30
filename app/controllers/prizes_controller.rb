@@ -28,37 +28,30 @@ caches_action :get_current_game
   end
 
   def get_current_game
-    currentgame = Game.currentgame
-    if currentgame.nil?
-      currentgame = Game.nextbettablegame
-      if currentgame.nil?
-        currentgame = Game.nextgame
-        bettable = false
-      else
-        bettable = true
-      end
-    else
-      bettable = false
+    currentgames = Game.currentgames
+    gameteams = {}
+    currentgames.each do |game|
+      teams = game.teamsinfo
+      gameteams["#{game.team1}"] = teams[0]
+      gameteams["#{game.team2}"] = teams[1]
     end
-    teams = currentgame.teamsinfo
     respond_to do |format|
       format.html
-      format.json { render json: {"game" => currentgame, "teams" => teams, "bettable" => bettable}}
+      format.json { render json: {"game" => currentgames, "teams" => gameteams, "bettable" => false}}
     end
   end
 
   def get_bettable_game
-    game = Game.nextbettablegame
-    if game.nil?
-      game = Game.nextgame
-      bettable = false
-    else
-      bettable = true
+    games = Game.nextbettablegames
+    gameteams = {}
+    games.each do |game|
+      teams = game.teamsinfo
+      gameteams["#{game.team1}"] = teams[0]
+      gameteams["#{game.team2}"] = teams[1]
     end
-    teams = game.teamsinfo
     respond_to do |format|
       format.html
-      format.json { render json: {"game" => game, "teams" => teams, "bettable" => bettable}}
+      format.json { render json: {"game" => games, "teams" => gameteams, "bettable" => true}}
     end
   end
 
