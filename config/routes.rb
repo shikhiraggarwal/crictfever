@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post 'players/update'
   get 'prizes/index'
   get 'prizes/get_bettable_game'
+  get 'prizes/get_current_game'
   get 'prizes/adreward'
   get 'ranks/index'
   devise_for :supers, ActiveAdmin::Devise.config
