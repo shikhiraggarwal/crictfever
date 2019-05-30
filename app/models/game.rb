@@ -40,8 +40,8 @@ class Game < ApplicationRecord
   end
 
   def self.currentgame
-    time = Time.now - 86400
-    game = Game.where(matchtime: now..@last_match).sort_by(&:matchtime).first
+    yesterday = Time.now - 86400
+    game = Game.where(matchtime: yesterday..@last_match).sort_by(&:matchtime).first
     if game.finished == 0
       return game
     else
