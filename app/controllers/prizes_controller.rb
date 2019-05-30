@@ -31,8 +31,8 @@ caches_action :get_current_game
     currentgame = Game.currentgame
     if currentgame.nil?
       currentgame = Game.nextbettablegame
-      if game.nil?
-        game = Game.nextgame
+      if currentgame.nil?
+        currentgame = Game.nextgame
         bettable = false
       else
         bettable = true
