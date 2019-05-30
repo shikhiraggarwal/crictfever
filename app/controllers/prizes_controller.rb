@@ -1,6 +1,7 @@
 class PrizesController < ApplicationController
 caches_action :index
 caches_action :get_bettable_game
+caches_action :get_current_game
   def index
     prizes = Reward.where(:game => 'wc')
     respond_to do |format|
@@ -21,6 +22,26 @@ caches_action :get_bettable_game
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: {"message" => message} }
+    end
+  end
+
+  def get_current_game
+    currentgame = Game.currentgame
+    if currentgame.nil?
+      currentgame = Game.nextbettablegame
+      if game.nil?
+        game = Game.nextgame
+        bettable = false
+      else
+        bettable = true
+      end
+    else
+      bettable = false
+    end
+    teams = currentgame.teamsinfo
+    respond_to do |format|
+      format.html
+      format.json { render json: {"game" => currentgame, "teams" => teams, "bettable" => bettable}}
     end
   end
 
