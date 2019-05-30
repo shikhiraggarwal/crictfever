@@ -1,6 +1,6 @@
 class PrizesController < ApplicationController
 caches_action :index
-caches_action :get_bettable_game
+caches_action :get_bettable_game, expires_in: 3.hour
   def index
     prizes = Reward.where(:game => 'wc')
     respond_to do |format|
