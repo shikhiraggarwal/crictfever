@@ -27,3 +27,7 @@ end
 every :hour do # Many shortcuts available: :hour, :day, :month, :year, :reboot
   rake "bet_bonus_points"
 end
+
+every '* * * * *' do # Many shortcuts available: :hour, :day, :month, :year, :reboot
+  rake "process_bets"
+end
