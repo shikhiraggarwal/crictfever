@@ -25,7 +25,7 @@ class PlayersController < ApplicationController
     else
       player = nil
     end
-    has_update = false
+    has_update = true
     if has_update
       tempplayer = player.to_json
       tempplayer = JSON.parse(tempplayer)

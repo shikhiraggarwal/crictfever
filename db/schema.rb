@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_072413) do
+ActiveRecord::Schema.define(version: 2019_05_31_052745) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 2019_05_29_072413) do
     t.integer "lost"
     t.integer "played"
     t.boolean "last"
+    t.integer "nr"
   end
 
   create_table "terms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

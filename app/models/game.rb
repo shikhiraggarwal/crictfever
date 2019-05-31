@@ -48,7 +48,7 @@ class Game < ApplicationRecord
     games = Game.where(matchtime: yesterday..now).sort_by(&:matchtime)
     current_games = []
     games.each do |game|
-      if game.finished == 0
+      if game.finished == 0 || game.finished.nil?
         current_games << game
       end
     end
