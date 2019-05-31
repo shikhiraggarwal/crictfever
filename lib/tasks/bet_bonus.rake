@@ -5,7 +5,7 @@ task bet_bonus_points: :environment do
   current_games.each do |game|
     if !bonused.include?(game.id)
       bonused << game.id
-      Bets = Bet.where(game: 2)
+      Bets = Bet.where(game: game.id)
       player_ids = Bets.group(:player).count.keys
       player_ids.each do |id|
         player = Player.find(id)
