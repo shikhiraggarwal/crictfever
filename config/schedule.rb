@@ -23,3 +23,7 @@ set :output, '/home/shikhir_aggarwal92/app/crictfever/log/schedule.log'
 every '* * * * *' do # Many shortcuts available: :hour, :day, :month, :year, :reboot
   rake "rank_update"
 end
+
+every :hour do # Many shortcuts available: :hour, :day, :month, :year, :reboot
+  rake "bet_bonus_points"
+end
